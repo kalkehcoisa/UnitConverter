@@ -1,6 +1,7 @@
 import sys
+
+from units import UNITS
 import unit_dictionary
-from converters import convert, can_convert, get_si
 from converters.exceptions import ConversionError, RequireAdditionalParamError
 
 
@@ -131,7 +132,7 @@ def convert_units(value, from_unit, to_unit, **args):
     """
 
     # Check if units can be converted
-    if not can_convert(from_unit, to_unit):
+    if not UNITS.can_convert(from_unit, to_unit):
         return '[!] Units cannot be converted\n'
 
     # Extract the numeric value from the string
@@ -141,7 +142,7 @@ def convert_units(value, from_unit, to_unit, **args):
 
     # Return the value if units are the same
     if from_unit == to_unit:
-        return str(value) + " " + get_si(to_unit)
+        return str(value) + " " + UNITS.get_si(to_unit)
 
     responses = [
         check_time(value, from_unit, to_unit, decimal_places),  # Time units
@@ -164,7 +165,7 @@ def convert_units(value, from_unit, to_unit, **args):
 
     # actually convert the units
     try:
-        return str(round(convert(from_unit, to_unit, float(value), **args), decimal_places)) + " " + get_si(to_unit)
+        return str(round(UNITS.convert(from_unit, to_unit, float(value), **args), decimal_places)) + " " + UNITS.get_si(to_unit)
     except RequireAdditionalParamError as e:
         return handle_additional_required_params(e.additional_params)
     except ConversionError as e:
@@ -175,7 +176,7 @@ def handle_additional_required_params(additional_params):
     if len(additional_params) == 1:
         additional_unit = additional_params[0]
         additional_value = float(input("\n[*] Enter an additional value for {0}: ".format(additional_unit)))
-    else :
+    else:
         additional_unit = input("\n[*] Enter an additional unit (choose between " + str(additional_params) + "): ")
         if additional_unit not in additional_params:
             print("\n[x] The entered unit cannot be applied.")
@@ -197,7 +198,7 @@ def input_dialog():
         print('[-] Program exited.')
         sys.exit(0)
 
-    value = input(str('\n[*] Enter a value to convert from {0} to {1}: ').format(get_si(from_unit), get_si(to_unit)))
+    value = input(str('\n[*] Enter a value to convert from {0} to {1}: ').format(UNITS.get_si(from_unit), UNITS.get_si(to_unit)))
 
     if value == 'exit':
         print('[-] Program exited.')

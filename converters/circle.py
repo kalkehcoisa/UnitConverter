@@ -2,34 +2,38 @@
 
 import math
 
+from converters.base import Converter
 
-circle = {
-    "name": "Circle",
-    "units": [
+
+class Circle(Converter):
+    name = 'Circle'
+
+    _conversors = [
         {
-            "name": "Radians",
-            "si": "rad",
-            "_internal_accepted_names": [
-                "rad",
-                "radians",
+            'category': 'circle',
+            'name': 'Radians',
+            'si': 'rad',
+            '_internal_accepted_names': [
+                'rad',
+                'radians',
             ],
-            "_internal_function_": "radians",
-            "_internal_conversion": {
-                "degrees": lambda radians: math.degrees(radians),  # radians to degrees
+            '_internal_function_': 'radians',
+            '_internal_conversion': {
+                'degrees': lambda radians: math.degrees(radians),  # radians to degrees
             }
         },
         {
-            "name": "Degrees",
-            "si": "°",
-            "_internal_accepted_names": [
-                "deg",
-                "degree",
-                "degrees",
+            'category': 'circle',
+            'name': 'Degrees',
+            'si': '°',
+            '_internal_accepted_names': [
+                'deg',
+                'degree',
+                'degrees',
             ],
-            "_internal_function_": "degrees",
-            "_internal_conversion": {
-                "radians": lambda degrees: math.radians(degrees),  # degrees to radians
+            '_internal_function_': 'degrees',
+            '_internal_conversion': {
+                'radians': lambda degrees: math.radians(degrees),  # degrees to radians
             }
         },
-    ],
-}
+    ]
