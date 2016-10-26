@@ -11,26 +11,26 @@ Note that the array should contain a name to indicate the conversion category an
 A sample is listed below.
 
 ```
-{
-    "name": "Temperature",
-    "units": [
+class Temperature(Converter):
+    name = 'Temperature'
+
+    _conversors = [
         {
-            "name": "Celsius",
-            "si": "°C",
-            "_internal_accepted_names": [
-                "c",
-                "celsius",
-                "°c",
+            'name': 'Celsius',
+            'si': '°C',
+            '_internal_accepted_names': [
+                'c',
+                'celsius',
+                '°c',
             ],
-            "_internal_function_": "celsius",
-            "_internal_conversion": {
-                "fahrenheit": lambda celsius: celsius * 1.8 + 32,  # celsius to fahrenheit
-                "kelvin": lambda celsius: celsius + 273.15,  # celsius to kelvin
+            '_internal_function_': 'celsius',
+            '_internal_conversion': {
+                'fahrenheit': lambda celsius: celsius * 1.8 + 32,  # celsius to fahrenheit
+                'kelvin': lambda celsius: celsius + 273.15,  # celsius to kelvin
             },
         },
         ...
-    ],
-}
+    ]
 ```
 
 In the sample we see that the `Temperature` has (at least) one unit (`Celsius`). To convert from or to celsius the input "c", "celsius" and "°c" are allowed in the terminal (case insensitive).

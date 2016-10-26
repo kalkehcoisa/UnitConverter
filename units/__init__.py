@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from converters.exceptions import ConversionError, RequireAdditionalParamError
+from converters.exceptions import (
+    ConversionError,
+    RequireAdditionalParamError
+)
 
 
 class UnitsManager(object):
@@ -13,20 +16,20 @@ class UnitsManager(object):
     def __init__(self, *ag, **kw):
         from converters import circle
         from converters import currency
-        from converters.electric import electric
-        from converters.force import force
-        from converters.pressure import pressure
-        from converters.speed import speed
-        from converters.temperature import temperature
+        from converters import electric
+        from converters import force
+        from converters import pressure
+        from converters import speed
+        from converters import temperature
 
         self._units = (
             circle.Circle,
             currency.Currency,
-            electric,
-            force,
-            pressure,
-            speed,
-            temperature,
+            electric.Energy,
+            force.Force,
+            pressure.Pressure,
+            speed.Speed,
+            temperature.Temperature,
         )
 
     def __iter__(self):
@@ -133,6 +136,9 @@ class UnitsManager(object):
 
         conversor = self.find_unit_converter(from_unit)
         to_unit = self.find_unit_name(to_unit)
+
+        # take the named additional params and map the si to the '_internal_function_' name
+        # additional_params = {self.find_unit(k)['_internal_function_']: v for k, v in kwargs.iteritems()}
 
         return conversor.convert(from_unit, to_unit, value)
 
