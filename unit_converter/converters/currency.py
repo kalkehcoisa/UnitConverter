@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import requests
 import json
-from converters.exceptions import ConversionError
+from unit_converter.converters.exceptions import ConversionError
 
-from converters.base import Converter
+from unit_converter.converters.base import Converter
 
 
 class Currency(Converter):

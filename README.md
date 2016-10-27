@@ -23,7 +23,7 @@ A unit conversion API module in Python.
 ###Examples
 
 ```python
-UnitConverter $ python unit_converter.py
+UnitConverter $ unit_converter
 Python unit converter by mattgd.
      Units supported:
      Circle: radians (rad), degrees (deg)

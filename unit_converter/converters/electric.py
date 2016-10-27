@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from converters.base import Converter
-from converters.exceptions import ConversionError
+from unit_converter.converters.base import Converter
+from unit_converter.converters.exceptions import ConversionError
 
 
 class Energy(Converter):

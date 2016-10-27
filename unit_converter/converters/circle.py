@@ -2,7 +2,7 @@
 
 import math
 
-from converters.base import Converter
+from unit_converter.converters.base import Converter
 
 
 class Circle(Converter):

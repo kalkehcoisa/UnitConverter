@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from converters.base import Converter
+from unit_converter.converters.base import Converter
 
 
 class Pressure(Converter):

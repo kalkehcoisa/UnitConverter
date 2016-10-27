@@ -1,8 +1,11 @@
 import sys
 
-from units import UNITS
-import unit_dictionary
-from converters.exceptions import ConversionError, RequireAdditionalParamError
+from unit_converter.units import UNITS
+from unit_converter import unit_dictionary
+from unit_converter.converters.exceptions import (
+    ConversionError,
+    RequireAdditionalParamError
+)
 
 
 # TIME CONVERSION

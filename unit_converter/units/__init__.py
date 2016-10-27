@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from converters.exceptions import (
+from unit_converter.converters.exceptions import (
     ConversionError,
     RequireAdditionalParamError
 )
@@ -14,13 +14,13 @@ class UnitsManager(object):
     _units = ()
 
     def __init__(self, *ag, **kw):
-        from converters import circle
-        from converters import currency
-        from converters import electric
-        from converters import force
-        from converters import pressure
-        from converters import speed
-        from converters import temperature
+        from unit_converter.converters import circle
+        from unit_converter.converters import currency
+        from unit_converter.converters import electric
+        from unit_converter.converters import force
+        from unit_converter.converters import pressure
+        from unit_converter.converters import speed
+        from unit_converter.converters import temperature
 
         self._units = (
             circle.Circle,
